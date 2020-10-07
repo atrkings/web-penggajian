@@ -113,6 +113,19 @@
             $this->form_validation->set_rules('gaji_lembur','gaji lembur','required');
             $this->form_validation->set_rules('tj_kesehatan','tunjangan kesehatan','required');
         }
+
+        public function deleteData($id)
+        {
+            $where = array('id_jabatan' => $id);
+            $this->penggajianModel->delete_data($where, 'data_jabatan');
+            $this->session->set_flashdata('pesan','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Yey! Selamat, datamu berhasil dihapus</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+            redirect('admin/dataJabatan');
+        }
     }
 
 
