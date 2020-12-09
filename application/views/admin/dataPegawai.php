@@ -11,7 +11,7 @@
 <table class="table table-striped table-bordered">
     <tr>
         <th class="text-center">No</th>
-        <th class="text-center">NIK</th>
+        <th class="text-center">Nomer Rekening</th>
         <th class="text-center">Nama Pegawai</th>
         <th class="text-center">Jenis Kelamin</th>
         <th class="text-center">Jabatan</th>
@@ -24,14 +24,24 @@
     <?php $no=1; foreach($pegawai as $p) : ?>
     <tr>
         <td> <?= $no++ ?> </td>
-        <td> <?= $p->nik ?> </td>
+        <td> <?= $p->no_rek ?> </td>
         <td> <?= $p->nama_pegawai ?> </td>
         <td> <?= $p->jenis_kelamin ?> </td>
         <td> <?= $p->jabatan ?> </td>
         <td> <?= $p->tanggal_masuk ?> </td>
         <td> <?= $p->status ?> </td>
-        <td> <img src= "<?= base_url(). 'assets/photo/'. $p->photo ?>"> </td>
-        <td> <?= $p->nik ?> </td>
+        <td> <img src= "<?= base_url(). 'assets/photo/'. $p->photo ?>" width="50px"> </td>
+        <td>
+                <center>
+                    <a class="btn btn-sm btn-primary" href="<?= base_url('admin/dataPegawai/updateData/' .$p->id_pegawai) ?>">
+                        <i class= "fas fa-edit">
+                        </i>
+                    </a>
+                    <a onclick="return confirm('Yakin, Hapus <?= $p->nama_pegawai ?> ?')" class="btn btn-sm btn-danger" href="<?= base_url('admin/dataPegawai/deleteData/' .$p->id_pegawai) ?>">
+                        <i class= "fas fa-trash">
+                        </i>
+                    </a>
+                </center>
     </tr>
     <?php endforeach; ?>
 </table>

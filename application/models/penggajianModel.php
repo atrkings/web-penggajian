@@ -22,6 +22,15 @@
             $this->db->where($where);
             $this->db->delete($table);
         }
+
+        public function insert_batch($table = null, $data = array())
+        {
+            $jumlah = count ($data);
+            if($jumlah > 0)
+            {
+                $this->db->insert_batch($table, $data);
+            }
+        }
     }
 
 ?>
